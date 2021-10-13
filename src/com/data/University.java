@@ -4,13 +4,12 @@ import com.data.teacherSubclass.FullTimeTeacher;
 import com.data.teacherSubclass.PartTimeTeacher;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Locale;
 
 public class University {
-    private ArrayList<Teacher> teachers = new ArrayList<Teacher>() {};
-    private ArrayList<Student> students;
-    private ArrayList<UniversityClass> universityClasses;
+    private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    private ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<UniversityClass> universityClasses = new ArrayList<UniversityClass>();
 
     public University(ArrayList<Teacher> teachers, ArrayList<Student> students, ArrayList<UniversityClass> universityClasses) {
         this.teachers = teachers;
@@ -18,13 +17,10 @@ public class University {
         this.universityClasses = universityClasses;
     }
 
-    public University(){
-        teachers.add(new PartTimeTeacher("Pedro", 20, 74000F));
-        teachers.add(new FullTimeTeacher("Oscar", 8, 80000F));
-        teachers.add(new PartTimeTeacher("Juan", 40, 45000F));
-        teachers.add(new FullTimeTeacher("Felipe", 10, 80000F));
-        teachers.add(new FullTimeTeacher("Carol", 10, 100000F));
-        teachers.add(new PartTimeTeacher("Pablo", 38, 60000F));
+    public University() {
+        teachersInitialization();
+        studentsInitialization();
+        universityClassesInitialization();
     }
 
 
@@ -39,4 +35,86 @@ public class University {
     public ArrayList<UniversityClass> getUniversityClasses() {
         return universityClasses;
     }
+
+
+    private void teachersInitialization() {
+        teachers.add(new PartTimeTeacher("Pedro", 20, 74000F));
+        teachers.add(new FullTimeTeacher("Oscar", 8, 80000F));
+        teachers.add(new PartTimeTeacher("Juan", 40, 45000F));
+        teachers.add(new FullTimeTeacher("Felipe", 10, 80000F));
+        teachers.add(new FullTimeTeacher("Carol", 10, 100000F));
+        teachers.add(new PartTimeTeacher("Pablo", 38, 60000F));
+    }
+
+    private void studentsInitialization() {
+        students.add(new Student("Jose", 30));
+        students.add(new Student("Geronimo", 25));
+        students.add(new Student("Pedro", 22));
+        students.add(new Student("Pablo", 24));
+        students.add(new Student("Erik", 26));
+        students.add(new Student("Roberto", 28));
+        students.add(new Student("Gustavo", 28));
+        students.add(new Student("Jimena", 28));
+        students.add(new Student("Victor", 28));
+    }
+
+    private void universityClassesInitialization() {
+
+        // Crete 4 different university with random teachers and random students
+        ArrayList<Student> studentsToIndex = new ArrayList<>();
+        String [] classNames = {"Math", "Biology", "Chemistry", "Spanish"};
+        String [] classRooms = {"B-12", "B-5", "A-10", "C-8"};
+        int studentIndex;
+        int teachersIndex;
+        for (int i = 0; i <4; i++) {
+            for (int a = 0; a < 5; a++) {
+                studentIndex = (int) Math.floor(Math.random() * students.size());
+                studentsToIndex.add(students.get(studentIndex));
+            }
+
+            teachersIndex = (int) Math.floor(Math.random() * teachers.size());
+
+            universityClasses.add(new UniversityClass(classNames[i], classRooms[i], teachers.get(teachersIndex), studentsToIndex ));
+        }
+    }
+
+
+    public String getAllTeachersAsString(){
+        StringBuilder output = new StringBuilder();
+        output.append(" == TEACHERS == \n");
+        for (Teacher teacher: teachers){
+            output.append("\t -> ").append(teacher.name).append(" || ").append(teacher.getType()).append(" || Salary: ").append(teacher.getBaseSalary()).append("\n");
+        }
+        return output.toString();
+    }
+
+    public String getAllClassesAsString(){
+        StringBuilder output = new StringBuilder();
+        output.append(" == CLASSES == \n");
+
+        for (int i = 0; i < universityClasses.size(); i++) {
+            output.append("\t ").append(i+1).append(") -> ").append(universityClasses.get(i).getName()).append(" Teacher: ").append(universityClasses.get(i).getTeacher()).append(" SIZE: ").append(universityClasses.get(i).getSize()).append("\n");
+        }
+
+        return output.toString();
+    }
+
+    public String getAParticularClassAsString(int index){
+        StringBuilder output = new StringBuilder();
+        output.append(" == "+ universityClasses.get(index).toString().toUpperCase(Locale.ROOT) +" CLASS == \n")
+                .append("Teacher: ").append(universityClasses.get(index).getTeacher()).append("\n")
+                .append(" Size: ").append(universityClasses.get(index).getSize()).append("\n")
+                .append("STUDENTS: \n")
+                .append(universityClasses.get(index).getAllStudentsAsString());
+
+        return output.toString();
+    }
+
+
+
+
+
+
+
+
 }

@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class UniversityClass {
     private final String name;
     private final String assignedRoom;
-
-    private ArrayList<Teacher> teachers;
+    private Teacher teacher;
     private ArrayList<Student> students;
 
-    public UniversityClass(String name, String assignedRoom, ArrayList<Teacher> teachers, ArrayList<Student> students) {
+    public UniversityClass(String name, String assignedRoom, Teacher teacher, ArrayList<Student> students) {
         this.name = name;
         this.assignedRoom = assignedRoom;
-        this.teachers = teachers;
+        this.teacher = teacher;
         this.students = students;
+
     }
 
     public String getName() {
@@ -24,22 +24,30 @@ public class UniversityClass {
         return assignedRoom;
     }
 
-    public ArrayList<Teacher> getTeachers() {
-        return teachers;
+    public String getTeacher() {
+        return teacher.getName();
     }
 
     public ArrayList<Student> getStudents() {
         return students;
     }
 
+    public String getAllStudentsAsString(){
+        StringBuilder output = new StringBuilder();
+
+        for(Student student : students){
+            output.append("\t -> ").append(student.getName()).append("\n");
+        }
+
+
+        return output.toString();
+    }
+
     public String getAllPeopleInClass() {
         StringBuilder allPeople = new StringBuilder();
 
-        allPeople.append("=========TEACHERS========");
-
-        for (Teacher teacher : teachers) {
-            allPeople.append(teacher.name).append("  TYPE: ").append(teacher.getType()).append("\n");
-        }
+        allPeople.append("Teacher: \n" +
+                "\t this.teacher");
 
         allPeople.append("\n").append("=================STUDENTS============");
 
@@ -47,6 +55,10 @@ public class UniversityClass {
             allPeople.append(student.getId()).append(" ").append(student.getName()).append("\n");
         }
         return allPeople.toString();
+    }
+
+    public int getSize(){
+        return students.size();
     }
 
 }
