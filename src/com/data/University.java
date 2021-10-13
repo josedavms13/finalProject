@@ -100,14 +100,12 @@ public class University {
     }
 
     public String getAParticularClassAsString(int index){
-        StringBuilder output = new StringBuilder();
-        output.append(" == "+ universityClasses.get(index).toString().toUpperCase(Locale.ROOT) +" CLASS == \n")
-                .append("Teacher: ").append(universityClasses.get(index).getTeacher()).append("\n")
-                .append(" Size: ").append(universityClasses.get(index).getSize()).append("\n")
-                .append("STUDENTS: \n")
-                .append(universityClasses.get(index).getAllStudentsAsString());
 
-        return output.toString();
+        return " == " + universityClasses.get(index).toString().toUpperCase(Locale.ROOT) + " CLASS == \n" +
+                "Teacher: " + universityClasses.get(index).getTeacher() + "\n" +
+                " Size: " + universityClasses.get(index).getSize() + "\n" +
+                "STUDENTS: \n" +
+                universityClasses.get(index).getAllStudentsAsString();
     }
 
 
