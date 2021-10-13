@@ -3,7 +3,7 @@ package com.data.teacherSubclass;
 import com.data.Teacher;
 
 public class FullTimeTeacher extends Teacher {
-    private String name;
+    private final String name;
     private final String type;
     private final int yearsOfExperience;
     private final float salary;
@@ -17,7 +17,7 @@ public class FullTimeTeacher extends Teacher {
 
 
     public float getBaseSalary(){
-        return salary * (yearsOfExperience * (10 * yearsOfExperience));
+        return salary * (yearsOfExperience + (yearsOfExperience / 10F));
     }
 
     public String getName() {
@@ -34,5 +34,9 @@ public class FullTimeTeacher extends Teacher {
 
     public String getType() {
         return this.type;
+    }
+
+    public String getSalaryMultiplier(){
+        return yearsOfExperience + " Years of Experience";
     }
 }

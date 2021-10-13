@@ -12,6 +12,6 @@ public class Main {
 
         University university = new University();
 
-        System.out.println(university.getAParticularClassAsString(2));
+        System.out.println(university.getAllTeachersAsString());
     }
 }

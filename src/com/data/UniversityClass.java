@@ -1,23 +1,24 @@
 package com.data;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class UniversityClass {
-    private final String name;
+    private final String className;
     private final String assignedRoom;
     private Teacher teacher;
     private ArrayList<Student> students;
 
     public UniversityClass(String name, String assignedRoom, Teacher teacher, ArrayList<Student> students) {
-        this.name = name;
+        this.className = name;
         this.assignedRoom = assignedRoom;
         this.teacher = teacher;
         this.students = students;
 
     }
 
-    public String getName() {
-        return name;
+    public String getClassName() {
+        return className;
     }
 
     public String getAssignedRoom() {
@@ -32,6 +33,11 @@ public class UniversityClass {
         return students;
     }
 
+    /*public String getWholeClassAsStringByIndex(int index){
+
+        return ""
+    }*/
+
     public String getAllStudentsAsString(){
         StringBuilder output = new StringBuilder();
 
@@ -43,19 +49,11 @@ public class UniversityClass {
         return output.toString();
     }
 
-    public String getAllPeopleInClass() {
-        StringBuilder allPeople = new StringBuilder();
+    public String getClassAsString(){
 
-        allPeople.append("Teacher: \n" +
-                "\t this.teacher");
-
-        allPeople.append("\n").append("=================STUDENTS============");
-
-        for (Student student : students) {
-            allPeople.append(student.getId()).append(" ").append(student.getName()).append("\n");
-        }
-        return allPeople.toString();
+        return className.toLowerCase(Locale.ROOT) + "TEACHER: " + teacher.getName() + " Size: " + getSize();
     }
+
 
     public int getSize(){
         return students.size();

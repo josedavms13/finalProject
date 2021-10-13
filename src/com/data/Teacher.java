@@ -6,4 +6,5 @@ public abstract class Teacher {
     protected abstract float getBaseSalary();
     protected abstract String getType();
     protected abstract String getName();
+    protected abstract String getSalaryMultiplier();
 }

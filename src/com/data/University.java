@@ -37,6 +37,7 @@ public class University {
     }
 
 
+    //region INITIALIZATION METHODS
     private void teachersInitialization() {
         teachers.add(new PartTimeTeacher("Pedro", 20, 74000F));
         teachers.add(new FullTimeTeacher("Oscar", 8, 80000F));
@@ -77,13 +78,15 @@ public class University {
             universityClasses.add(new UniversityClass(classNames[i], classRooms[i], teachers.get(teachersIndex), studentsToIndex ));
         }
     }
+    //endregion
+
 
 
     public String getAllTeachersAsString(){
         StringBuilder output = new StringBuilder();
         output.append(" == TEACHERS == \n");
         for (Teacher teacher: teachers){
-            output.append("\t -> ").append(teacher.name).append(" || ").append(teacher.getType()).append(" || Salary: ").append(teacher.getBaseSalary()).append("\n");
+            output.append("\t -> ").append(teacher.getName()).append(" || ").append(teacher.getType()).append(" || Salary: ").append(teacher.getBaseSalary()).append(" || ").append(teacher.getSalaryMultiplier()).append("\n");
         }
         return output.toString();
     }
@@ -92,9 +95,7 @@ public class University {
         StringBuilder output = new StringBuilder();
         output.append(" == CLASSES == \n");
 
-        for (int i = 0; i < universityClasses.size(); i++) {
-            output.append("\t ").append(i+1).append(") -> ").append(universityClasses.get(i).getName()).append(" Teacher: ").append(universityClasses.get(i).getTeacher()).append(" SIZE: ").append(universityClasses.get(i).getSize()).append("\n");
-        }
+
 
         return output.toString();
     }
@@ -102,10 +103,7 @@ public class University {
     public String getAParticularClassAsString(int index){
 
         return " == " + universityClasses.get(index).toString().toUpperCase(Locale.ROOT) + " CLASS == \n" +
-                "Teacher: " + universityClasses.get(index).getTeacher() + "\n" +
-                " Size: " + universityClasses.get(index).getSize() + "\n" +
-                "STUDENTS: \n" +
-                universityClasses.get(index).getAllStudentsAsString();
+                universityClasses.get(index).getClassAsString();
     }
 
 

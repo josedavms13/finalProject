@@ -35,4 +35,7 @@ public class PartTimeTeacher extends Teacher {
         return this.type;
     }
 
+    public String getSalaryMultiplier(){
+        return this.hoursPerWeek + " Hours per week";
+    }
 }
