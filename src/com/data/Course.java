@@ -3,19 +3,20 @@ package com.data;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class UniversityClass {
+public class Course {
     private final String className;
     private final String assignedRoom;
-    private Teacher teacher;
-    private ArrayList<Student> students;
+    private final Teacher teacher;
+    private final ArrayList<Student> students;
 
-    public UniversityClass(String name, String assignedRoom, Teacher teacher, ArrayList<Student> students) {
+    public Course(String name, String assignedRoom, Teacher teacher, ArrayList<Student> students) {
         this.className = name;
         this.assignedRoom = assignedRoom;
         this.teacher = teacher;
         this.students = students;
 
-
+        System.out.println("students in course");
+        System.out.println(students);
     }
 
     public String getClassName() {
@@ -48,7 +49,6 @@ public class UniversityClass {
     }
 
     public String getClassAsString(){
-        System.out.println("in univrsistyasd");
         System.out.println(students);
         return className.toUpperCase(Locale.ROOT) + " Teacher: " + teacher.getName() + " Size: " + getSize();
     }

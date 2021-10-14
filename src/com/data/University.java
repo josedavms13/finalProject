@@ -9,18 +9,12 @@ import java.util.Locale;
 public class University {
     private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
     private ArrayList<Student> students = new ArrayList<Student>();
-    private ArrayList<UniversityClass> universityClasses = new ArrayList<UniversityClass>();
-
-    public University(ArrayList<Teacher> teachers, ArrayList<Student> students, ArrayList<UniversityClass> universityClasses) {
-        this.teachers = teachers;
-        this.students = students;
-        this.universityClasses = universityClasses;
-    }
+    public ArrayList<Course> courseList = new ArrayList<Course>();
 
     public University() {
         teachersInitialization();
         studentsInitialization();
-        universityClassesInitialization();
+        coursesListInitialization();
     }
 
 
@@ -32,8 +26,8 @@ public class University {
         return students;
     }
 
-    public ArrayList<UniversityClass> getUniversityClasses() {
-        return universityClasses;
+    public ArrayList<Course> getCourseList() {
+        return courseList;
     }
 
 
@@ -59,7 +53,7 @@ public class University {
         students.add(new Student("Victor", 28));
     }
 
-    private void universityClassesInitialization() {
+    private void coursesListInitialization() {
 
         int numberOfClassesToCreate = 4;
 
@@ -79,10 +73,12 @@ public class University {
             }
 
             teachersIndex = (int) Math.floor(Math.random() * teachers.size());
+            System.out.println("studentsToIndex");
             System.out.println(studentsToIndex);
-            universityClasses.add(new UniversityClass(classNames[i], classRooms[i], teachers.get(teachersIndex), studentsToIndex ));
-            studentsToIndex.clear();
+            this.courseList.add(new Course(classNames[i], classRooms[i], teachers.get(teachersIndex), studentsToIndex ));
+            studentsToIndex = new ArrayList<>();
         }
+
     }
     //endregion
 
@@ -101,8 +97,8 @@ public class University {
         StringBuilder output = new StringBuilder();
         output.append(" == CLASSES == \n");
 
-        for (int i = 0; i < universityClasses.size(); i++) {
-            output.append(i+1).append(") ").append(universityClasses.get(i).getClassAsString()).append("\n");
+        for (int i = 0; i < this.courseList.size(); i++) {
+            output.append(i+1).append(") ").append(courseList.get(i).getClassAsString()).append("\n");
         }
 
         return output.toString();
@@ -110,8 +106,8 @@ public class University {
 
     public String getAParticularClassAsString(int index){
 
-        return " == " + universityClasses.get(index).toString().toUpperCase(Locale.ROOT) + " CLASS == \n" +
-                universityClasses.get(index).getClassAsString();
+        return " == " + courseList.get(index).toString().toUpperCase(Locale.ROOT) + " CLASS == \n" +
+                courseList.get(index).getClassAsString();
     }
 
 
