@@ -15,7 +15,6 @@ public class UniversityClass {
         this.teacher = teacher;
         this.students = students;
 
-        System.out.println(students);
 
     }
 
@@ -37,12 +36,23 @@ public class UniversityClass {
 
 
 
+    public String getAllStudentsAsString(){
+        StringBuilder output = new StringBuilder();
 
+        for(Student student : students){
+            output.append("\t -> ").append(student.getName()).append("\n");
+        }
+
+
+        return output.toString();
+    }
 
     public String getClassAsString(){
-
-        return className.toLowerCase(Locale.ROOT) + "TEACHER: " + teacher.getName() + " Size: " + getSize();
+        System.out.println("in univrsistyasd");
+        System.out.println(students);
+        return className.toUpperCase(Locale.ROOT) + " Teacher: " + teacher.getName() + " Size: " + getSize();
     }
+
 
 
     public int getSize(){

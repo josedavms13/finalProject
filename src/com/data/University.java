@@ -61,21 +61,27 @@ public class University {
 
     private void universityClassesInitialization() {
 
-        // Crete 4 different university with random teachers and random students
+        int numberOfClassesToCreate = 4;
+
+
         ArrayList<Student> studentsToIndex = new ArrayList<>();
         String [] classNames = {"Math", "Biology", "Chemistry", "Spanish"};
         String [] classRooms = {"B-12", "B-5", "A-10", "C-8"};
-        int studentIndex;
+        int studentRandomPicker;
         int teachersIndex;
-        for (int i = 0; i <4; i++) {
-            for (int a = 0; a < 5; a++) {
-                studentIndex = (int) Math.floor(Math.random() * students.size());
-                studentsToIndex.add(students.get(studentIndex));
+
+        for (int i = 0; i < numberOfClassesToCreate; i++) {
+
+            // Inserts randomly between 4 and 8 students
+            for (int a = 0; a < (int)Math.floor(Math.random() * 4) + 4; a++) {
+                studentRandomPicker = (int) Math.floor(Math.random() * students.size());
+                studentsToIndex.add(students.get(studentRandomPicker));
             }
 
             teachersIndex = (int) Math.floor(Math.random() * teachers.size());
-
+            System.out.println(studentsToIndex);
             universityClasses.add(new UniversityClass(classNames[i], classRooms[i], teachers.get(teachersIndex), studentsToIndex ));
+            studentsToIndex.clear();
         }
     }
     //endregion
@@ -95,7 +101,9 @@ public class University {
         StringBuilder output = new StringBuilder();
         output.append(" == CLASSES == \n");
 
-
+        for (int i = 0; i < universityClasses.size(); i++) {
+            output.append(i+1).append(") ").append(universityClasses.get(i).getClassAsString()).append("\n");
+        }
 
         return output.toString();
     }
