@@ -5,6 +5,8 @@ import com.data.teacherSubclass.PartTimeTeacher;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class University {
     private ArrayList<Teacher> teachers = new ArrayList<>();
@@ -43,13 +45,35 @@ public class University {
     }
 
 
-    public String getAParticularClassAsString(int index){
-
+    public String getCourseGeneralInformationByIndex(int input){
+        int index = input - 1;
         return " == " + courseList.get(index).getClassName().toUpperCase(Locale.ROOT) + " CLASS == \n" +
                 courseList.get(index).getClassAsString() + "\n" +
                 courseList.get(index).getAllStudentsAsString();
     }
 
+    public String getAllStudentAsString(){
+        StringBuilder output = new StringBuilder();
+        output.append("STUDENTS \n");
+        for(Student student : students){
+            output.append(student.getWholeInformation()).append("\n");
+        }
+        return output.toString();
+    }
+
+
+    public void getCoursesByStudentId(int studentId){
+
+        Stream<Student> a;
+         Student theOne;
+
+        a = students.stream().filter(student -> student.getId() == studentId);
+
+        Student b = a.collect(Collectors.toList()).get(0);
+        System.out.println(b.getName());
+
+
+    }
 
 
 

@@ -21,7 +21,8 @@ public class Main {
         University university = new University(teachers, students, courses);
 
 
-        System.out.println(university.getAParticularClassAsString(2));
+        System.out.println(university.getAllStudentAsString());
+        university.getCoursesByStudentId(2);
 
     }
 }

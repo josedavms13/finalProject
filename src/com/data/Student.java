@@ -27,4 +27,8 @@ public class Student {
     public int getAge() {
         return age;
     }
+
+    public String getWholeInformation(){
+        return "ID = " + this.id + " Name: " + this.name + " Age: " + this.age;
+    }
 }
