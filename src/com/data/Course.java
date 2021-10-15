@@ -50,7 +50,7 @@ public class Course {
 
     public String getClassAsString(){
         System.out.println(students);
-        return className.toUpperCase(Locale.ROOT) + " Teacher: " + teacher.getName() + " Size: " + getSize();
+        return className.toUpperCase(Locale.ROOT) + " => Teacher: " + teacher.getName() + " || Number of students: " + getSize();
     }
 
 
