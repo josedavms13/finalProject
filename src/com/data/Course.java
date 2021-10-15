@@ -58,6 +58,12 @@ public class Course {
     }
 
 
+    public boolean addStudent(Student student){
+        students.add(student);
+        return true;
+    }
+
+
     public int getSize(){
         return students.size();
     }

@@ -36,11 +36,9 @@ public class University {
     public String getAllClassesAsString() {
         StringBuilder output = new StringBuilder();
         output.append(" == CLASSES == \n");
-
         for (int i = 0; i < this.courseList.size(); i++) {
             output.append(i + 1).append(") ").append(courseList.get(i).getClassAsString()).append("\n");
         }
-
         return output.toString();
     }
 
@@ -51,6 +49,7 @@ public class University {
                 courseList.get(index).getClassAsString() + "\n" +
                 courseList.get(index).getAllStudentsAsString();
     }
+
 
     public String getAllStudentAsString() {
         StringBuilder output = new StringBuilder();
@@ -63,14 +62,29 @@ public class University {
 
 
     public List<Course> getCoursesByStudentId(int studentId) {
-
         return
                 courseList.stream()
                         .filter(course -> course.findStudentInCourse(studentId))
                         .collect(Collectors.toList());
-
-
     }
 
+
+    public boolean addNewStudentToCourse(Student student, int courseIndex){
+
+        if(courseIndex <= courseList.size()){
+            return courseList.get(courseIndex).addStudent(student);
+        }else
+            return false;
+    }
+
+    public boolean createNewTeacher(Teacher teacher){
+        teachers.add(teacher);
+        return true;
+    }
+
+    public boolean createNewCourse(String className, String room, Teacher teacher, ArrayList<Student> students){
+        courseList.add(new Course(className, room, teacher, students));
+        return true;
+    }
 
 }
