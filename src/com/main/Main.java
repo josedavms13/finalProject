@@ -22,7 +22,8 @@ public class Main {
 
 
         System.out.println(university.getAllStudentAsString());
-        university.getCoursesByStudentId(2);
+        university.getCoursesByStudentId(2).stream()
+                .forEach(course -> System.out.println(course.getClassName()));
 
     }
 }

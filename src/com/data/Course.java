@@ -53,6 +53,9 @@ public class Course {
         return className.toUpperCase(Locale.ROOT) + " => Teacher: " + teacher.getName() + " || Number of students: " + getSize();
     }
 
+    public boolean findStudentInCourse(int studentId){
+        return students.stream().anyMatch(student -> student.getId() == studentId);
+    }
 
 
     public int getSize(){
