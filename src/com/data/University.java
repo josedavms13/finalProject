@@ -15,8 +15,6 @@ public class University {
         this.students = students;
         this.courseList = courseList;
 
-        System.out.println("teachers en uni");
-        System.out.println(this.teachers);
     }
 
     /**

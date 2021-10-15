@@ -22,7 +22,7 @@ public class Main {
 
         University university = new University(teachers, students, courses);
 
-
+        printAllProfessorsWithItsData(university);
 
 
     }
@@ -44,7 +44,4 @@ public class Main {
         university.addNewStudentAndAddToCourse(new Student(name, age), courseToAdd);
     }
 
-    /*private static void createNewClass(University university, String className, String room, ){
-        university.createNewCourse()
-    }*/
 }

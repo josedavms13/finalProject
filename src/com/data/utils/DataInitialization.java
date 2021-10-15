@@ -52,6 +52,7 @@ public class DataInitialization {
         ArrayList<Course> courseList = new ArrayList<>();
 
         ArrayList<Student> studentPool;
+        ArrayList<Teacher> teacherPool = (ArrayList<Teacher>) teachers.clone();
 
 
         ArrayList<Student> studentsToIndex = new ArrayList<>();
@@ -63,14 +64,15 @@ public class DataInitialization {
 
         for (int a = 0; a < numberOfClassesToCreate ; a++) {
 
+
             studentPool = (ArrayList<Student>) students.clone();
             for (int i = 0; i < (int) Math.floor(Math.random() * 4) + 4; i++) {
 
                 indexOfStudentFromPool = (int) Math.floor(Math.random() * studentPool.size());
                 studentsToIndex.add(studentPool.remove(indexOfStudentFromPool));
             }
-            teachersIndex = (int)Math.floor(Math.random() * teachers.size());
-            courseList.add(new Course(classNames[a], classRooms[a], teachers.remove(teachersIndex), studentsToIndex));
+            teachersIndex = (int)Math.floor(Math.random() * teacherPool.size());
+            courseList.add(new Course(classNames[a], classRooms[a], teacherPool.remove(teachersIndex), studentsToIndex));
             studentsToIndex = new ArrayList<>();
         }
 
