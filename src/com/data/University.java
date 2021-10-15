@@ -45,7 +45,7 @@ public class University {
 
     public String getAParticularClassAsString(int index){
 
-        return " == " + courseList.get(index).toString().toUpperCase(Locale.ROOT) + " CLASS == \n" +
+        return " == " + courseList.get(index).getClassName().toUpperCase(Locale.ROOT) + " CLASS == \n" +
                 courseList.get(index).getClassAsString() + "\n" +
                 courseList.get(index).getAllStudentsAsString();
     }

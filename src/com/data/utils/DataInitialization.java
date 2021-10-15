@@ -8,8 +8,8 @@ import com.data.teacherSubclass.PartTimeTeacher;
 
 import java.util.ArrayList;
 
-public class DataInitializator {
-    public static ArrayList<Teacher> initializeTeachers(){
+public class DataInitialization {
+    public static ArrayList<Teacher> initializeTeachers() {
 
         ArrayList<Teacher> teachers = new ArrayList<Teacher>();
 
@@ -23,8 +23,8 @@ public class DataInitializator {
         return teachers;
     }
 
-    public static ArrayList<Student> initializeStudents(){
-        ArrayList <Student> students = new ArrayList<>();
+    public static ArrayList<Student> initializeStudents() {
+        ArrayList<Student> students = new ArrayList<>();
 
         students.add(new Student("Jose", 30));
         students.add(new Student("Geronimo", 25));
@@ -41,13 +41,9 @@ public class DataInitializator {
 
 
     /**
-     *
-     * @param numberOfClassesToCreate
-     * <b>Must be an integer between 4 and 6</b>
-     * @param teachers
-     * Receives an initialized list of Teachers
-     * @param students
-     * Receives an initialized list of Students
+     * @param numberOfClassesToCreate <b>Must be an integer between 4 and 6</b>
+     * @param teachers                Receives an initialized list of Teachers
+     * @param students                Receives an initialized list of Students
      * @return List of courses initialized
      */
 
@@ -55,25 +51,30 @@ public class DataInitializator {
 
         ArrayList<Course> courseList = new ArrayList<>();
 
+        ArrayList<Student> studentPool;;
+        ArrayList<Teacher> teacherPool = teachers;
+
+
         ArrayList<Student> studentsToIndex = new ArrayList<>();
-        String [] classNames = {"Math", "Biology", "Chemistry", "Spanish", "Geometry", "Arts"};
-        String [] classRooms = {"B-12", "B-5", "A-10", "C-8", "B-10", "A-1"};
-        int studentRandomPicker;
+        String[] classNames = {"Math", "Biology", "Chemistry", "Spanish", "Geometry", "Arts"};
+        String[] classRooms = {"B-12", "B-5", "A-10", "C-8", "B-10", "A-1"};
+
+        int indexOfStudentFromPool;
         int teachersIndex;
 
-        for (int i = 0; i < numberOfClassesToCreate; i++) {
+        for (int a = 0; a < numberOfClassesToCreate ; a++) {
 
-            // Inserts randomly between 4 and 8 students
-            for (int a = 0; a < (int)Math.floor(Math.random() * 4) + 4; a++) {
-                studentRandomPicker = (int) Math.floor(Math.random() * students.size());
-                studentsToIndex.add(students.get(studentRandomPicker));
+            studentPool = (ArrayList<Student>) students.clone();
+            for (int i = 0; i < (int) Math.floor(Math.random() * 4) + 4; i++) {
+
+                indexOfStudentFromPool = (int) Math.floor(Math.random() * studentPool.size());
+                studentsToIndex.add(studentPool.remove(indexOfStudentFromPool));
             }
-
-            teachersIndex = (int) Math.floor(Math.random() * teachers.size());
-
-            courseList.add(new Course(classNames[i], classRooms[i], teachers.get(teachersIndex), studentsToIndex ));
+            teachersIndex = (int)Math.floor(Math.random() * teacherPool.size());
+            courseList.add(new Course(classNames[a], classRooms[a], teacherPool.remove(teachersIndex), studentsToIndex));
             studentsToIndex = new ArrayList<>();
         }
+
 
         return courseList;
     }

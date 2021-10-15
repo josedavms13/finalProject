@@ -15,8 +15,8 @@ public class Course {
         this.teacher = teacher;
         this.students = students;
 
-        System.out.println("students in course");
-        System.out.println(students);
+//        System.out.println("students in course");
+//        System.out.println(students);
     }
 
     public String getClassName() {
