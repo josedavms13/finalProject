@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DataInitialization {
     public static ArrayList<Teacher> initializeTeachers() {
 
-        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+        ArrayList<Teacher> teachers = new ArrayList<>();
 
         teachers.add(new PartTimeTeacher("Pedro", 20, 74000F));
         teachers.add(new FullTimeTeacher("Oscar", 8, 80000F));
@@ -51,7 +51,7 @@ public class DataInitialization {
 
         ArrayList<Course> courseList = new ArrayList<>();
 
-        ArrayList<Student> studentPool;;
+        ArrayList<Student> studentPool;
 
 
         ArrayList<Student> studentsToIndex = new ArrayList<>();

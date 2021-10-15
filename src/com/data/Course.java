@@ -27,8 +27,9 @@ public class Course {
         return assignedRoom;
     }
 
-    public String getTeacher() {
-        return teacher.getName();
+    public String getCourseTeacher() {
+        return
+                teacher.getName() + " || "+ teacher.getType();
     }
 
     public ArrayList<Student> getStudents() {
@@ -41,9 +42,8 @@ public class Course {
         StringBuilder output = new StringBuilder();
 
         for(Student student : students){
-            output.append("\t -> ").append(student.getName()).append("\n");
+            output.append("\t -> ").append(student).append("\n");
         }
-
 
         return output.toString();
     }

@@ -1,27 +1,28 @@
 package com.data;
 
-import com.data.teacherSubclass.FullTimeTeacher;
-import com.data.teacherSubclass.PartTimeTeacher;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class University {
-    private ArrayList<Teacher> teachers = new ArrayList<>();
-    private ArrayList<Student> students = new ArrayList<>();
-    private ArrayList<Course> courseList = new ArrayList<>();
+    private ArrayList<Teacher> teachers;
+    private ArrayList<Student> students;
+    private ArrayList<Course> courseList;
 
     public University(ArrayList<Teacher> teachers, ArrayList<Student> students, ArrayList<Course> courseList) {
         this.teachers = teachers;
         this.students = students;
         this.courseList = courseList;
+
+        System.out.println("teachers en uni");
+        System.out.println(this.teachers);
     }
 
     /**
-     * @return A prepared to print String with the list of teachers and their details
+     * @return
+     * <b>String</b>
+     * A prepared to print String with the list of teachers and their details
      */
     public String getAllTeachersAsString() {
         StringBuilder output = new StringBuilder();
@@ -46,7 +47,9 @@ public class University {
     public String getCourseGeneralInformationByIndex(int input) {
         int index = input - 1;
         return " == " + courseList.get(index).getClassName().toUpperCase(Locale.ROOT) + " CLASS == \n" +
-                courseList.get(index).getClassAsString() + "\n" +
+                "TEACHER: \n"+
+                courseList.get(index).getCourseTeacher() +
+                "\n STUDENTS: \n"+
                 courseList.get(index).getAllStudentsAsString();
     }
 
@@ -61,15 +64,16 @@ public class University {
     }
 
 
-    public List<Course> getCoursesByStudentId(int studentId) {
+    public List<String> getCoursesByStudentIdAsStringList(int studentId) {
         return
                 courseList.stream()
                         .filter(course -> course.findStudentInCourse(studentId))
+                        .map(course -> course.getClassAsString())
                         .collect(Collectors.toList());
     }
 
 
-    public boolean addNewStudentToCourse(Student student, int courseIndex){
+    public boolean addNewStudentAndAddToCourse(Student student, int courseIndex){
 
         if(courseIndex <= courseList.size()){
             return courseList.get(courseIndex).addStudent(student);
@@ -82,6 +86,14 @@ public class University {
         return true;
     }
 
+    /**
+     *
+     * @param className
+     * @param room
+     * @param teacher
+     * @param students
+     * @return
+     */
     public boolean createNewCourse(String className, String room, Teacher teacher, ArrayList<Student> students){
         courseList.add(new Course(className, room, teacher, students));
         return true;

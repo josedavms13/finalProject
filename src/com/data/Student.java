@@ -24,6 +24,10 @@ public class Student {
         return name;
     }
 
+    public String toString(){
+        return this.name + " Age: " + this.age;
+    }
+
     public int getAge() {
         return age;
     }

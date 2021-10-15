@@ -16,14 +16,35 @@ public class Main {
 
         ArrayList <Student> students = DataInitialization.initializeStudents();
         ArrayList<Teacher> teachers = DataInitialization.initializeTeachers();
+        System.out.println("teachers en main");
+        System.out.println(teachers);
         ArrayList<Course> courses = DataInitialization.initializeCourseList(5, teachers, students);
 
         University university = new University(teachers, students, courses);
 
 
-        System.out.println(university.getAllStudentAsString());
-        university.getCoursesByStudentId(2)
-                .forEach(course -> System.out.println(course.getClassName()));
+
 
     }
+
+    private static void printAllProfessorsWithItsData(University university){
+
+        System.out.println(university.getAllTeachersAsString());
+    }
+
+    private static void printAllClasses(University university){
+        System.out.println(university.getAllClassesAsString());
+    }
+
+    private static void printAClassDetails(University university, int index){
+        System.out.println(university.getCourseGeneralInformationByIndex(index));
+    }
+
+    private static void createANewStudent(University university, String name, int age, int courseToAdd){
+        university.addNewStudentAndAddToCourse(new Student(name, age), courseToAdd);
+    }
+
+    /*private static void createNewClass(University university, String className, String room, ){
+        university.createNewCourse()
+    }*/
 }
