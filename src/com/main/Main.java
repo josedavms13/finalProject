@@ -56,6 +56,9 @@ public class Main {
                 break;
 
             case 6:
+                showClassesOfAStudent(university);
+
+            case 7:
                 isRunning = false;
                 System.out.println("Program finished");
                 break;
@@ -178,9 +181,35 @@ public class Main {
                 System.out.println("Invalid Numbers, be sure that a user with that ID exists");
             }
         }
+    }
 
+
+
+    private static void showClassesOfAStudent(University university){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("SHOWING CLASSES OF A STUDENT BY ID");
+
+        boolean isRunning = true;
+        int userMenuChoice;
+
+        System.out.println("Please type the student's ID or type -1 to go back");
+
+        userMenuChoice = scanner.nextInt();
+
+        if(userMenuChoice == -1){
+            isRunning = false;
+        }else if(userMenuChoice < -1 || userMenuChoice > university.getStudentList().size()){
+            showInvalidInputMessage();
+        }else{
+
+
+
+
+
+        }
 
     }
+
 
 
     private static void showInvalidInputMessage() {

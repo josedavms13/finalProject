@@ -12,7 +12,9 @@ import java.util.ArrayList;
 public class DataInitialization {
 
 
-    private ArrayList<Course> courses = new ArrayList<>();
+    private static ArrayList<Teacher> teachersList = new ArrayList<>();
+    private static ArrayList<Student> studentsList = new ArrayList<>();
+    private static ArrayList<Course> coursesList = new ArrayList<>();
 
     public static ArrayList<Teacher> initializeTeachers() {
 
@@ -25,6 +27,7 @@ public class DataInitialization {
         teachers.add(new FullTimeTeacher("Carol", 10, 100000F));
         teachers.add(new PartTimeTeacher("Pablo", 38, 60000F));
 
+        teachersList = teachers;
         return teachers;
     }
 
@@ -41,6 +44,7 @@ public class DataInitialization {
         students.add(new Student("Jimena", 28));
         students.add(new Student("Victor", 28));
 
+        studentsList = students;
         return students;
     }
 
@@ -81,7 +85,7 @@ public class DataInitialization {
             studentsToIndex = new ArrayList<>();
         }
 
-
+        coursesList = courseList;
         return courseList;
     }
 
@@ -92,8 +96,9 @@ public class DataInitialization {
      * @return new instance of university
      */
     public static University initializeUniversity (int numberOfCoursesToCreate){
-
-        return new University(initializeTeachers(), initializeStudents(), initializeCourseList(numberOfCoursesToCreate, initializeTeachers(), initializeStudents()));
+        initializeStudents();
+        initializeTeachers();
+        return new University(teachersList, studentsList, initializeCourseList(numberOfCoursesToCreate, teachersList, studentsList));
     }
 
 }
