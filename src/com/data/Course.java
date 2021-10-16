@@ -49,12 +49,13 @@ public class Course {
     }
 
     public String getClassAsString(){
-        System.out.println(students);
-        return className.toUpperCase(Locale.ROOT) + " => Teacher: " + teacher.getName() + " || Number of students: " + getSize();
+        return this.className.toUpperCase(Locale.ROOT) + " => Teacher: " + teacher.getName() + " || Number of students: " + getSize();
     }
 
     public boolean findStudentInCourse(int studentId){
-        return students.stream().anyMatch(student -> student.getId() == studentId);
+        return students.stream().anyMatch(student -> {
+            return student.getId() == studentId;
+        });
     }
 
 

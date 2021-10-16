@@ -192,7 +192,8 @@ public class Main {
         boolean isRunning = true;
         int userMenuChoice;
 
-        System.out.println("Please type the student's ID or type -1 to go back");
+        System.out.println("Please type the student's ID or type -1 to go back \n" + university.getAllStudentAsString());
+
 
         userMenuChoice = scanner.nextInt();
 
@@ -202,10 +203,7 @@ public class Main {
             showInvalidInputMessage();
         }else{
 
-
-
-
-
+            System.out.println(university.getCoursesByStudentIdAsString(userMenuChoice));
         }
 
     }

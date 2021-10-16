@@ -73,6 +73,13 @@ public class University {
                         .map(course -> course.getClassAsString())
                         .collect(Collectors.toList());
     }
+    public String getCoursesByStudentIdAsString(int studentId) {
+        StringBuilder output = new StringBuilder();
+        getCoursesByStudentIdAsStringList(studentId)
+                .forEach(course -> output.append(course).append(" \n"));
+
+        return output.toString();
+    }
 
 
     public boolean addNewStudentAndAddToCourse(Student student, int courseIndex){
