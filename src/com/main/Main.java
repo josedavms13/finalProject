@@ -21,54 +21,56 @@ public class Main {
         boolean isRunning = true;
 
         int menuUserInput;
-        System.out.println(" Welcome \n" +
-                "Please type:\n" +
-                "1) To see all professors. \n" +
-                "2) To see all students. \n" +
-                "3) To see all courses. \n" +
-                "4) To create a new student and add it to a class \n" +
-                "5) To create a new class \n" +
-                "6) To see all classes taken by a student \n" +
-                "7) To exit the program \n"
-        );
+        System.out.println("WELCOME");
 
-        menuUserInput = scanner.nextInt();
+        while (isRunning) {
+            System.out.println(
+                    "Please type: \n" +
+                            "1) To see all professors. \n" +
+                            "2) To see all students. \n" +
+                            "3) To see all courses. \n" +
+                            "4) To create a new student and add it to a class \n" +
+                            "5) To create a new class \n" +
+                            "6) To see all classes taken by a student \n" +
+                            "7) To exit the program \n"
+            );
 
-        switch (menuUserInput) {
-            case 1:
-                printAllProfessorsWithItsData(university);
-                break;
+            menuUserInput = scanner.nextInt();
 
-            case 2:
-                printAllStudents(university);
-                break;
+            switch (menuUserInput) {
+                case 1:
+                    printAllProfessorsWithItsData(university);
+                    break;
 
-            case 3:
-                printAllClasses(university);
-                break;
+                case 2:
+                    printAllStudents(university);
+                    break;
 
-            case 4:
-                createANewStudent(university);
-                break;
+                case 3:
+                    printAllClasses(university);
+                    break;
 
-            case 5:
-                createNewCourseWithData(university);
-                break;
+                case 4:
+                    createANewStudent(university);
+                    break;
 
-            case 6:
-                showClassesOfAStudent(university);
+                case 5:
+                    createNewCourseWithData(university);
+                    break;
 
-            case 7:
-                isRunning = false;
-                System.out.println("Program finished");
-                break;
+                case 6:
+                    showClassesOfAStudent(university);
 
-            default:
-                showInvalidInputMessage();
-                break;
+                case 7:
+                    isRunning = false;
+                    System.out.println("Program finished");
+                    break;
+
+                default:
+                    showInvalidInputMessage();
+                    break;
+            }
         }
-
-
     }
 
     private static void printAllProfessorsWithItsData(University university) {
@@ -99,7 +101,6 @@ public class Main {
                 isRunning = false;
             }
         }
-
     }
 
     private static void printAClassDetails(University university, int index) {
@@ -122,9 +123,7 @@ public class Main {
         System.out.println("Type the age");
         studentAge = scanner.nextInt();
 
-        System.out.println("Select the course to add student in \n" +
-                university.getAllClassesAsString()
-        );
+        System.out.println("Select the course to add student in \n" + university.getAllClassesAsString());
 
         while (isRunning) {
 
@@ -138,7 +137,6 @@ public class Main {
                 System.out.println("Student added successfully");
             }
         }
-
     }
 
     private static void createNewCourseWithData(University university) {
@@ -151,7 +149,6 @@ public class Main {
         String room;
         int teacherIndex;
         List<Integer> studentsIds;
-
 
 
         while (isRunning) {
@@ -184,35 +181,31 @@ public class Main {
     }
 
 
-
-    private static void showClassesOfAStudent(University university){
+    private static void showClassesOfAStudent(University university) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("SHOWING CLASSES OF A STUDENT BY ID");
 
         boolean isRunning = true;
         int userMenuChoice;
 
-        System.out.println("Please type the student's ID or type -1 to go back \n" + university.getAllStudentAsString());
+        while (isRunning) {
+            System.out.println("Please type the student's ID or type -1 to go back \n" + university.getAllStudentAsString());
 
 
-        userMenuChoice = scanner.nextInt();
+            userMenuChoice = scanner.nextInt();
 
-        if(userMenuChoice == -1){
-            isRunning = false;
-        }else if(userMenuChoice < -1 || userMenuChoice > university.getStudentList().size()){
-            showInvalidInputMessage();
-        }else{
-
-            System.out.println(university.getCoursesByStudentIdAsString(userMenuChoice));
+            if (userMenuChoice == -1) {
+                isRunning = false;
+            } else if (userMenuChoice < -1 || userMenuChoice > university.getStudentList().size()) {
+                showInvalidInputMessage();
+            } else {
+                System.out.println(university.getCoursesByStudentIdAsString(userMenuChoice));
+            }
         }
-
     }
-
 
 
     private static void showInvalidInputMessage() {
         System.out.println("Invalid input, please try again");
     }
-
-
 }
