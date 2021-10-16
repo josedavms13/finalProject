@@ -27,6 +27,10 @@ public class FullTimeTeacher extends Teacher {
         return salary;
     }
 
+    public String toString(){
+        return this.getName() + " || " + this.type;
+    }
+
     public String getType() {
         return this.type;
     }

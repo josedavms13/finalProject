@@ -22,8 +22,17 @@ public class Main {
 
         University university = new University(teachers, students, courses);
 
-        printAllProfessorsWithItsData(university);
+        System.out.println("Courses");
+        System.out.println(university.getAllClassesAsString());
 
+
+        System.out.println("-------------------");
+
+
+        createNewCourseWithData(university, "nuevo", "Z 999", 3, new ArrayList<Integer>(){{add(2);add(3); add(4);}});
+        System.out.println(university.getAllClassesAsString());
+
+        System.out.println(university.getCourseGeneralInformationByIndex(6));
 
     }
 
@@ -42,6 +51,10 @@ public class Main {
 
     private static void createANewStudent(University university, String name, int age, int courseToAdd){
         university.addNewStudentAndAddToCourse(new Student(name, age), courseToAdd);
+    }
+
+    private static void createNewCourseWithData(University university ,String className, String room, int teacherIndex, ArrayList<Integer> studentsIds){
+        university.createNewCourseWithData(className, room, teacherIndex, studentsIds);
     }
 
 }

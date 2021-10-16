@@ -23,6 +23,10 @@ public class PartTimeTeacher extends Teacher {
         return salary;
     }
 
+    public String toString(){
+        return this.getName() + " || " + this.type;
+    }
+
     public float getBaseSalary(){
         return hoursPerWeek * salary;
     }
