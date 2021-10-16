@@ -150,9 +150,9 @@ public class Main {
         List<Integer> studentsIds;
 
 
-        System.out.println("CREATING A NEW CLASS \n");
 
         while (isRunning) {
+            System.out.println("CREATING A NEW CLASS \n");
             System.out.println("Please type the class name");
             className = scanner.nextLine();
 
