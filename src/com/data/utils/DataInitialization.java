@@ -3,12 +3,17 @@ package com.data.utils;
 import com.data.Course;
 import com.data.Student;
 import com.data.Teacher;
+import com.data.University;
 import com.data.teacherSubclass.FullTimeTeacher;
 import com.data.teacherSubclass.PartTimeTeacher;
 
 import java.util.ArrayList;
 
 public class DataInitialization {
+
+
+    private ArrayList<Course> courses = new ArrayList<>();
+
     public static ArrayList<Teacher> initializeTeachers() {
 
         ArrayList<Teacher> teachers = new ArrayList<>();
@@ -79,4 +84,16 @@ public class DataInitialization {
 
         return courseList;
     }
+
+    /**
+     *
+     * @param numberOfCoursesToCreate
+     * <p>Int between 4 and 6</p>
+     * @return new instance of university
+     */
+    public static University initializeUniversity (int numberOfCoursesToCreate){
+
+        return new University(initializeTeachers(), initializeStudents(), initializeCourseList(numberOfCoursesToCreate, initializeTeachers(), initializeStudents()));
+    }
+
 }

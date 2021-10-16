@@ -38,7 +38,7 @@ public class University {
         StringBuilder output = new StringBuilder();
         output.append(" == CLASSES == \n");
         for (int i = 0; i < this.courseList.size(); i++) {
-            output.append(i + 1).append(") ").append(courseList.get(i).getClassAsString()).append(" Room: ").append(courseList.get(i).getAssignedRoom()).append("\n");
+            output.append(i + 1).append(") ").append(courseList.get(i).getClassName()).append(" Room: ").append(courseList.get(i).getAssignedRoom()).append("\n");
         }
         return output.toString();
     }
@@ -106,17 +106,18 @@ public class University {
         return true;
     }
 
-    /**
-     *
-     * @param className
-     * @param room
-     * @param teacher
-     * @param students
-     * @return
-     */
+
     public boolean createNewCourse(String className, String room, Teacher teacher, ArrayList<Student> students){
         courseList.add(new Course(className, room, teacher, students));
         return true;
     }
 
+
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public ArrayList<Student> getStudentList() {
+        return students;
+    }
 }
