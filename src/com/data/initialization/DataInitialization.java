@@ -1,4 +1,4 @@
-package com.data.utils;
+package com.data.initialization;
 
 import com.data.Course;
 import com.data.Student;

@@ -1,10 +1,8 @@
 package com.main;
 
-import com.data.Course;
 import com.data.Student;
-import com.data.Teacher;
 import com.data.University;
-import com.data.utils.DataInitialization;
+import com.data.initialization.DataInitialization;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,7 +58,7 @@ public class Main {
 
                 case 6:
                     showClassesOfAStudent(university);
-
+                    break;
                 case 7:
                     isRunning = false;
                     System.out.println("Program finished");
